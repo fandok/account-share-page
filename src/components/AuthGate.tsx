@@ -22,24 +22,17 @@ const AuthGate = ({ children }: Props) => {
   if (unlocked) return <>{children}</>;
 
   return (
-    <AutoCenter
-      style={{
-        height: "100vh",
-        flexDirection: "column",
-        gap: 12,
-        padding: "0 32px",
-      }}
-    >
-      <h2 style={{ marginBottom: 8 }}>Enter PIN</h2>
+    <AutoCenter className="auth-gate">
+      <h2 className="auth-gate__title">Enter PIN</h2>
       <Input
+        className="auth-gate__input"
         placeholder="PIN"
         type="password"
         value={input}
         onChange={setInput}
         onEnterPress={handleUnlock}
-        style={{ border: "1px solid #ccc", borderRadius: 8, padding: "8px 12px", width: 200 }}
       />
-      <Button color="primary" onClick={handleUnlock} style={{ width: 200 }}>
+      <Button className="auth-gate__button" color="primary" onClick={handleUnlock}>
         Unlock
       </Button>
     </AutoCenter>
