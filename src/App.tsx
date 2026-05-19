@@ -46,19 +46,19 @@ const App = () => {
             <Collapse.Panel key={String(key)} title={value.username}>
               <Form layout="horizontal">
                 <Form.Item label="Password">
-                  <Input
-                    readOnly
-                    value={value.password}
-                    type={visiblePasswords.has(key) ? "text" : "password"}
-                    suffix={
-                      <span
-                        className="password-toggle"
-                        onClick={() => toggleVisibility(key)}
-                      >
-                        {visiblePasswords.has(key) ? "Hide" : "Show"}
-                      </span>
-                    }
-                  />
+                  <div className="password-field">
+                    <Input
+                      readOnly
+                      value={value.password}
+                      type={visiblePasswords.has(key) ? "text" : "password"}
+                    />
+                    <span
+                      className="password-toggle"
+                      onClick={() => toggleVisibility(key)}
+                    >
+                      {visiblePasswords.has(key) ? "Hide" : "Show"}
+                    </span>
+                  </div>
                 </Form.Item>
               </Form>
               <Button

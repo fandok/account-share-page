@@ -47,10 +47,16 @@ body {
   width: 200px;
 }
 
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .password-toggle {
   color: #1677ff;
   cursor: pointer;
   font-size: 13px;
   user-select: none;
-  padding: 0 4px;
+  white-space: nowrap;
 }
