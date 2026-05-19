@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AutoCenter,
   Button,
@@ -13,6 +14,17 @@ import { USER_LIST } from "./constants";
 import AuthGate from "./components/AuthGate";
 
 const App = () => {
+  const [visiblePasswords, setVisiblePasswords] = useState<Set<number>>(new Set());
+
+  const toggleVisibility = (index: number) => {
+    setVisiblePasswords((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
   const handleCopy = (value: string) => {
     navigator.clipboard.writeText(value).then(() => {
       Toast.show("Password copied!");
@@ -34,7 +46,19 @@ const App = () => {
             <Collapse.Panel key={String(key)} title={value.username}>
               <Form layout="horizontal">
                 <Form.Item label="Password">
-                  <Input disabled value={value.password} type="password" />
+                  <Input
+                    readOnly
+                    value={value.password}
+                    type={visiblePasswords.has(key) ? "text" : "password"}
+                    suffix={
+                      <span
+                        className="password-toggle"
+                        onClick={() => toggleVisibility(key)}
+                      >
+                        {visiblePasswords.has(key) ? "Hide" : "Show"}
+                      </span>
+                    }
+                  />
                 </Form.Item>
               </Form>
               <Button
