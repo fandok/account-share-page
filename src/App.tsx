@@ -23,15 +23,7 @@ const App = () => {
 
   return (
     <AuthGate>
-      <div
-        style={{
-          maxWidth: 375,
-          margin: "0 auto",
-          height: "100vh",
-          position: "relative",
-          backgroundColor: "#fff",
-        }}
-      >
+      <div className="app-container">
         <SafeArea position="top" />
         <AutoCenter>
           <h1>Account Share Hub</h1>
@@ -57,10 +49,7 @@ const App = () => {
           ))}
         </Collapse>
         <SafeArea position="bottom" />
-        <Footer
-          style={{ position: "absolute", bottom: 0, left: 0, width: "100%" }}
-          label="Made it 👍 by @fandok"
-        />
+        <Footer className="app-footer" label="Made it 👍 by @fandok" />
       </div>
     </AuthGate>
   );
